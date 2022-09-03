@@ -14,9 +14,12 @@ namespace exs54
             int columns=int.Parse(Console.ReadLine());
             
             int [,] array =GetArray(rows,columns,0,20);
+            int temp;
             Console.WriteLine();
-            PrintArray(array);   
-            ArithmeticMeanColumns(array);
+            PrintArray(array); 
+             Console.WriteLine();  
+            SortingNums(array);
+             GiveArray(array); 
             int[,] GetArray(int rows, int columns, int min, int max)
             {
             int[,]result=new int[rows,columns];
@@ -42,23 +45,40 @@ namespace exs54
                     Console.WriteLine();
                 }
             } 
-             void ArithmeticMeanColumns(int[,]array)
+             void SortingNums(int[,]array)
             {   
                 
-                for (int j=0; j<array.GetLength(1); j++)
+                for (int k=0; k<array.GetLength(0); k++)
                 {
-                     double arith=0;
-                     double sum=0;
+          
                     for( int i=0; i<array.GetLength(0); i++)
                     {
-                    sum+= array[i,j];
-                    }
-                     arith=sum/array.GetLength(0);
+                       for (int j = array.GetLength(1) - 1; j > i; j--)
+                       if(array[k,j]>array[k,j-1])
+
+                       {
+                            temp=array[k,j-1];
+                            array[k,j-1]=array[k,j];
+                            array[k,j]=temp;
+                        }
                      
-                    Console.WriteLine ($"среднее арифметическое столбца={arith} ");
+                    } 
                 } 
-            
+               
             } 
+
+             void GiveArray(int[,] array)
+             {
+                  for (int i = 0; i < array.GetLength(0); i++)
+                  {
+                    
+                     for (int j = 0; j < array.GetLength(1); j++)
+                     {
+                       Console.Write($"{array[i,j]}  ");
+                     }
+                      Console.WriteLine();
+                   }
+            }
         }
     }
 }
