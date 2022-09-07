@@ -21,7 +21,7 @@ namespace exs62
                 bool existnum;
                 for (int i=0; i<8;) 
                 {
-                    int ran = random.Next(1,9);
+                    int ran = random.Next(10,100);
                     existnum = false; 
                     for (int ii=0; ii<8; ii++)
                     {
